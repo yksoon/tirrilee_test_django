@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+    <style type="text/css">
+        .content{
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <div class="content">
+            <div class="logo">
+                <img src="../../static/img/email_login_logo/email_login_logo.png" alt="">
+            </div>
+
+            <div class="login">
+                <p><input type="text" name="email" placeholder="아이디 / 메일주소" /></p>
+                <p><input type="password" name="password" placeholder="비밀번호" /></p>
+            </div>
+
+            <div class="kepp">
+                <p><input type="checkbox" name="keep_login">로그인 상태 유지하기</p>
+            </div>
+
+            <div class="btn">
+                <p><input type="submit" value="로그인"></p>
+                <p><input type="button" value="회원가입" onclick="location.href='{% url "sign_up" %}'"></p>
+            </div>
+            <div class="find">
+                <a href="/find_id/">아이디 찾기</a> &nbsp; | &nbsp; <a href="/find_pw/">비밀번호 찾기</a>
+            </div>
+            <div class="provision">
+                <table align="center">
+                    <tr>
+                        <td>
+                            회원가입 없이 카카오톡 계정만으로 바로 이용이 가능합니다.
+                            <br />
+                            로그인 시, 이용약관 및 개인정보처리방침 동의로 간주됩니다.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+
+
+    
+
+</body>
+</html>
