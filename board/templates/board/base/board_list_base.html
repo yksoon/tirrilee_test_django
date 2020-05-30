@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>메인</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../../../static/css/shop-homepage.css" rel="stylesheet">
+
+  <style type="text/css">
+    .p_nickname{
+      text-align: right;
+    }
+    .price{
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 네비게이션 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <img src="../../../static/img/header_tirrilee_logo.png">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <!-- 세션에서 받은 로그인 된 사용자 닉네임 -->
+          <li class="nav-item">
+            반갑습니다! {{ user }} 님!
+          </li>
+          <!-- 홈 이동 네비게이션 -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'main' %}"><img src="../../../static/img/home_select.png"></a> 
+          </li>
+          <!-- 검색 이동 네비게이션 -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'search' %}"><img src="../../../static/img/search_select.png"></a>
+          </li>
+          <!-- 커뮤니티 이동 네비게이션 -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'community' %}"><img src="../../../static/img/community_select.png"></a>
+          </li>
+          <!-- 마이페이지 이동 네비게이션 -->
+          <li class="nav-item">
+            <a class="nav-link" href="#"><img src="../../../static/img/mypage_select.png"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-9">
+
+      {% block banner %}
+      {% endblock %}
+
+        <div class="row">
+
+        {% block cardsection %}
+        {% endblock %}
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+      {% block community_add %}
+      {% endblock%}
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">made by YKSoon</p>
+    </div>
+  </footer>
+    <!-- /.container -->
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../../../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

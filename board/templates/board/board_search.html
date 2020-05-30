@@ -1,0 +1,39 @@
+{% extends 'board/base/board_search_base.html' %}
+
+    
+    {% block search_input %}
+    <form action="{% url 'search_result' %}" method="POST">{% csrf_token %}
+        <div>
+            <input type="text" name="search_input" placeholder="과일명을 입력해주세요." /><input type="submit" value="검색">
+        </div>
+        <div>
+            <select name="category">
+                <option value="">계절 선택</option>
+                <option value="봄">봄</option>
+                <option value="여름">여름</option>
+                <option value="가을">가을</option>
+                <option value="겨울">겨울</option>
+            </select>
+        </div>
+    </form>
+    {% endblock %}
+
+    {% block cardsection %}
+    {% for board in boards %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">{{ board.product }}</a><p class="p_nickname">{{ board.nickname }}</p>
+          </h4>
+          {{ board.category }}
+          <p class="price">{{ board.price }}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
