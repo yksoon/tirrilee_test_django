@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib import sessions
 from .models import Board
 import json
 
