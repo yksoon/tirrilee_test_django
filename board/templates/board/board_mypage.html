@@ -1,0 +1,20 @@
+{% extends 'board/base/board_list_base.html' %}
+
+{% block mypage %}
+<div>
+    <h1>마이페이지</h1>
+</div>
+<form action="{% url 'mypage' %}" method="POST">{% csrf_token %}
+    <div>
+        이름 &nbsp; &nbsp; {{ user }}
+        <br><br>
+        이메일 &nbsp; &nbsp; {{ user_email }}
+        <br><br>
+        소개 &nbsp; &nbsp; <textarea name="introduce"cols="30" rows="10">{{ user_introduce }}</textarea>
+    </div>
+    <div>
+        <button type="submit">수정 완료</button>&nbsp; &nbsp;
+        <button onclick="location.href='{% url "logout" %}'">로그 아웃</button>
+    </div>
+</form>
+{% endblock mypage %}

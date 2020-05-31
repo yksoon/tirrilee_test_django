@@ -1,3 +1,32 @@
-<html>
-    Hello Worlds
-</html>
+{% extends 'board/base/board_list_base.html' %}
+
+{% block add %}
+    <h1>글 작성하기</h1>
+    <br>
+    <br>
+    <form action="{% url 'community_add_result' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+        상품명
+        <br>
+        {{ boardform.product }}
+        <br>
+        <br>
+        가격
+        <br>
+        {{ boardform.price }}
+        <br>
+        <br>
+        분류
+        <br>
+        <input type="radio" name="category" value="봄" />봄
+        <input type="radio" name="category" value="여름" />여름
+        <input type="radio" name="category" value="가을" />가을
+        <input type="radio" name="category" value="겨울" />겨울
+        <br>
+        <br>
+        사진첨부
+        <br>
+        {{ boardform.image }}
+        <br><br>
+        <input type="submit" value="등록 완료">
+    </form>
+{% endblock add %}

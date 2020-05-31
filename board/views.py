@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from .models import Board
 import json
 
+from .forms import BoardForm
+from account.models import Member
 
 # Create your views here.
 
@@ -45,5 +47,45 @@ def community(request):
     boards = Board.objects.all()
     return render(request, 'board/board_community.html', {'boards': boards, 'user': user})
 
+# 커뮤니티 글작성
 def community_add(request):
-    return render(request, 'board/board_community_add.html', {})
+    boardform = BoardForm()
+    return render(request, 'board/board_community_add.html', {'boardform': boardform})
+
+# 커뮤니티 글작성 완료
+def community_add_result(request):
+    boardform = BoardForm(request.POST, request.FILES)
+    user_id = request.session.get('user_id')    # string 타입으로 받아짐
+    user = json.loads(user_id)                  # json을 통하여 파싱
+    user = user[0]['fields']['nickname']
+    
+    if request.method == 'POST':
+        if boardform.is_valid():
+            Board = boardform.save(commit=False)
+            Board.category = request.POST["category"]
+            Board.nickname = user
+            Board.save()
+            return redirect('community')
+        else:
+            return redirect('community')
+
+# 마이페이지
+def mypage(request):
+    user_id = request.session.get('user_id')    # string 타입으로 받아짐
+    user_jason = json.loads(user_id)                  # json을 통하여 파싱
+    user = user_jason[0]['fields']['nickname']
+    user_email = user_jason[0]['fields']['email']
+    user_introduce = user_jason[0]['fields']['introduce']
+    
+    if request.method == 'POST':
+        Member.objects.raw("UPDATE 'account_member' SET introduce='%s' WHERE email='%s'" % (request.POST['introduce'], user_email))
+        return redirect('mypage')
+    
+    return render(request, 'board/board_mypage.html', {'user_email': user_email, 'user': user, 'user_introduce': user_introduce})
+
+# 로그아웃
+def logout(request):
+    request.session.modified = True
+    del request.session['user_id']
+    
+    return redirect('/')

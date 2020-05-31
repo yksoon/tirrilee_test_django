@@ -55,7 +55,7 @@
           </li>
           <!-- 마이페이지 이동 네비게이션 -->
           <li class="nav-item">
-            <a class="nav-link" href="#"><img src="../../../static/img/mypage_select.png"></a>
+            <a class="nav-link" href="{% url 'mypage' %}"><img src="../../../static/img/mypage_select.png"></a>
           </li>
         </ul>
       </div>
@@ -69,13 +69,22 @@
 
       <div class="col-lg-9">
 
+      {% block add %}
+      {% endblock add %}
+
       {% block banner %}
       {% endblock %}
+
+      {% block mypage %}
+      {% endblock mypage %}
 
         <div class="row">
 
         {% block cardsection %}
         {% endblock %}
+
+      {% block community_add %}
+      {% endblock%}
 
         </div>
         <!-- /.row -->
@@ -86,8 +95,7 @@
     </div>
     <!-- /.row -->
 
-      {% block community_add %}
-      {% endblock%}
+
 
   </div>
   <!-- /.container -->

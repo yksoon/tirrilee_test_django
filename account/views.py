@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, HttpRequest
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.core import serializers
+from django.core.cache import cache
 
 from .models import Member
 from .forms import SignupForm
@@ -18,16 +19,17 @@ def login_check(request):
     if request.method == "POST":
         if Member.objects.raw("SELECT * FROM 'account_member' WHERE email='%s' AND password='%s'" %(request.POST["email"], request.POST["password"])):
             
-            userQuery = "SELECT 1 as id, email FROM 'account_member' WHERE email='%s'" % request.POST["email"]
+            userQuery = "SELECT id FROM 'account_member' WHERE email='%s'" % request.POST["email"]
             user = serializers.serialize('json', Member.objects.raw(userQuery))
             
             # 로그인 유지 세션
             if request.POST.get("keep_login"):
                 request.session['user_id'] = user
+                
                 # return render(request, 'board_list.html', {'user': user})
                 return redirect('board/')
             else:
-                
+                request.session['user_id'] = user
                 # return render(request, 'board_list.html', {'user': user})
                 return redirect('board/')
         else:
