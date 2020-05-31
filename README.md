@@ -52,7 +52,7 @@ sqlparse        0.3.1
 
 ## 전체 구조
 
-![스크린샷 2020-06-01 오전 1.57.16](/Users/yong-kwangsoon/Desktop/스크린샷 2020-06-01 오전 1.57.16.png)
+![스크린샷 2020-06-01 오전 1 57 16](https://user-images.githubusercontent.com/62881936/83358782-e03eb900-a3b0-11ea-96e5-837e37996997.png)
 
 > 전체 프로젝트 구조.
 
@@ -104,7 +104,7 @@ sqlparse        0.3.1
 
 ![스크린샷 2020-06-01 오전 2 06 24](https://user-images.githubusercontent.com/62881936/83358644-dcf6fd80-a3af-11ea-85ab-413af3dd1e20.png)
 
-![스크린샷 2020-06-01 오전 2.07.15](/Users/yong-kwangsoon/Desktop/스크린샷 2020-06-01 오전 2.07.15.png)
+![스크린샷 2020-06-01 오전 2 07 15](https://user-images.githubusercontent.com/62881936/83358784-e2087c80-a3b0-11ea-807a-50c3a9fb5866.png)
 
 ![스크린샷 2020-06-01 오전 2 07 43](https://user-images.githubusercontent.com/62881936/83358645-dd8f9400-a3af-11ea-9eb1-3c9b181e102e.png)
 
